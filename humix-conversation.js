@@ -45,7 +45,7 @@ humix.on('connection', function(humixSensorModule){
     }
 
     logger.info('loading config: '+ JSON.stringify(conf));
-    conversation = new Conv(conf, logger)
+    conversation = new Conv(conf, logger, hsm);
     conversation.init();
 
     logger.info('Communication with humix-sense is now ready.');

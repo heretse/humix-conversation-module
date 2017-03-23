@@ -1,17 +1,17 @@
 module.exports = {
 
     lang: 'cht', // 'en', 'cht' or 'chs'
-    'stt-engine': 'google', // 'watson' or 'google',
+    'stt-engine': 'watson', // 'watson' or 'google',
     'tts-engine': 'itri', // 'watson' or 'itri' or 'iflytek'
     stt: {
         sttSilenceInterval: 125,
         sttSampleRate: 16000,
         sttChannels: 1,
-        sttDebug: false,
+        sttDebug: true,
         sttDevice: 'plughw:1',
         watson: {
-            username: '',
-            passwd: ''
+            username: '6e2d666d-e7f4-4624-a68a-64bf3167599f',
+            passwd: 'ch7KlSx7axcg'
         },
         google: {
             username: 'xxxxx',
@@ -30,9 +30,9 @@ module.exports = {
             appid: '<app_id>'
         },
         itri: {
-            username: '',
-            passwd: '',
-            speaker: '',
+            username: 'heretse',
+            passwd: 'nn9759',
+            speaker: 'Bruce',
         }
     }
 };

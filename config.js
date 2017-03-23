@@ -4,10 +4,11 @@ module.exports = {
     'stt-engine': 'google', // 'watson' or 'google',
     'tts-engine': 'itri', // 'watson' or 'itri' or 'iflytek'
     stt: {
-        sttSilenceInterval : 30,
-        sttSampleRate : 16000,
-        sttChannels : 1,
-        sttDebug : false,
+        sttSilenceInterval: 125,
+        sttSampleRate: 16000,
+        sttChannels: 1,
+        sttDebug: false,
+        sttDevice: 'plughw:1',
         watson: {
             username: '',
             passwd: ''

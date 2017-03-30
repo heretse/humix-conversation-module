@@ -34,7 +34,7 @@ humix.on('connection', function(humixSensorModule) {
     require('getmac').getMac(function(err, macAddress) {
         if (err) throw err;
         logger.info('Get device mac address: ' + macAddress);
-        deviceMac = macAddress;
+        deviceMac = macAddress.replace(":", "");
     });
 
     if (!conf) {
@@ -70,7 +70,7 @@ humix.on('connection', function(humixSensorModule) {
 
         var input = { dev_mac: deviceMac, message: msg };
         if (hsm) {
-            hsm.event('stt', msg);
+            hsm.event('stt', String(msg));
         }
     });
 

@@ -70,7 +70,7 @@ humix.on('connection', function(humixSensorModule) {
 
         var input = { dev_mac: deviceMac, message: msg };
         if (hsm) {
-            hsm.event('stt', String(input));
+            hsm.event('stt', JSON.stringify(input));
         }
     });
 

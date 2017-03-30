@@ -4,14 +4,14 @@ var fs = require('fs');
 //var moduleConfig = require('./config.js');
 
 var config = {
-    "moduleName" : "humix-conversation-module",
-    "commands" : ["tts"],
-    "events" : ["stt"],
-    "log" : {
-        file : 'humix-conversation-module.log',
-        fileLevel : 'info',
-        consoleLevel : 'debug'
-      }
+    "moduleName": "humix-conversation-module",
+    "commands": ["tts"],
+    "events": ["stt"],
+    "log": {
+        file: 'humix-conversation-module.log',
+        fileLevel: 'info',
+        consoleLevel: 'debug'
+    }
 };
 
 var humix = new HumixSense(config);
@@ -21,22 +21,30 @@ var logger;
 
 console.log('========= starting ===========');
 
-humix.on('connection', function(humixSensorModule){
+humix.on('connection', function(humixSensorModule) {
     hsm = humixSensorModule;
 
     logger = hsm.getLogger();
 
     logger.info('access config');
     var conf = hsm.getDefaultConfig();
+    var deviceMac;
 
-    if(!conf){
+    // Fetch the computer's mac address 
+    require('getmac').getMac(function(err, macAddress) {
+        if (err) throw err;
+        logger.info('Get device mac address: ' + macAddress);
+        deviceMac = macAddress;
+    });
 
-        if(fs.existsSync('./config.js')){
+    if (!conf) {
+
+        if (fs.existsSync('./config.js')) {
 
             logger.info('using local config file')
             conf = require('./config.js');
 
-        }else{
+        } else {
 
             logger.error('fail to load conversation config. Exit');
             process.exit(1);
@@ -44,14 +52,14 @@ humix.on('connection', function(humixSensorModule){
 
     }
 
-    logger.info('loading config: '+ JSON.stringify(conf));
+    logger.info('loading config: ' + JSON.stringify(conf));
     conversation = new Conv(conf, logger)
     conversation.init();
 
     logger.info('Communication with humix-sense is now ready.');
 
-    hsm.on("tts", function (data) {
-        logger.debug('received tts data:'+data);
+    hsm.on("tts", function(data) {
+        logger.debug('received tts data:' + data);
 
         // TODO : Check the type of data.
         conversation.say(data);
@@ -60,10 +68,10 @@ humix.on('connection', function(humixSensorModule){
     conversation.on('msg', function(msg) {
         logger.debug('about to publish:' + msg);
 
-        if(hsm){
+        var input = { dev_mac: deviceMac, message: msg };
+        if (hsm) {
             hsm.event('stt', msg);
         }
     });
 
 });
-

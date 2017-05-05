@@ -21,7 +21,7 @@
     "humix-logger": "^1.0.4",
     "humix-sense": "^1.0.0",
     "javascript-state-machine": "^2.3.5",
-    "mic": "https://github.com/heretse/mic",
+    "mic": "git+https://github.com/heretse/mic.git",
     "mkdirp": "^0.5.1",
     "nats": "^0.6.4",
     "opencc": "^1.0.4",

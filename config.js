@@ -7,7 +7,7 @@ module.exports = {
         sttSilenceInterval: 125,
         sttSampleRate: 16000,
         sttChannels: 1,
-        sttDebug: true,
+        sttDebug: false,
         sttDevice: 'plughw:1',
         watson: {
             username: '6e2d666d-e7f4-4624-a68a-64bf3167599f',

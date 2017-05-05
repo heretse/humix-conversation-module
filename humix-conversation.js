@@ -10,7 +10,7 @@ var config = {
     "log": {
         file: 'humix-conversation-module.log',
         fileLevel: 'info',
-        consoleLevel: 'debug'
+        consoleLevel: 'info'
     }
 };
 

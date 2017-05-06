@@ -8,7 +8,7 @@ module.exports = {
         sttSampleRate: 16000,
         sttChannels: 1,
         sttDebug: false,
-        sttDevice: 'plughw:1',
+        sttDevice: 'plughw:1,0',
         watson: {
             username: '6e2d666d-e7f4-4624-a68a-64bf3167599f',
             passwd: 'ch7KlSx7axcg'
@@ -26,12 +26,12 @@ module.exports = {
             username: '',
             passwd: ''
         },
-        iflytek: {
+        flytek: {
             appid: '<app_id>'
         },
         itri: {
             username: 'heretse',
-            passwd: 'nn9759',
+            passwd: 'abcd1234',
             speaker: 'Bruce',
         }
     }
